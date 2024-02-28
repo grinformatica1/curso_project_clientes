@@ -1,34 +1,32 @@
 import { Component, AfterViewInit } from '@angular/core';
 
-import jQurery from 'jquery'
+import jQuery from 'jquery'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
   title = 'clientes-app';
 
   ngAfterViewInit(){
-    window.addEventListener('DOMContentLoaded', event => {
-
-      // Toggle the side navigation
-      const sidebarToggle = document.body.querySelector('#sidebarToggle');
-      if (sidebarToggle) {
-          // Uncomment Below to persist sidebar toggle between refreshes
-          // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-          //     document.body.classList.toggle('sb-sidenav-toggled');
-          // }
-          sidebarToggle.addEventListener('click', event => {
-              event.preventDefault();
-              document.body.classList.toggle('sb-sidenav-toggled');
-              localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-          });
-      }
-  
-  });
+    (function($) {
+        "use strict";
+    
+        // Add active state to sidbar nav links
+        var path = window.location.href; // because the 'href' property of the DOM element is the absolute path
+            $("#layoutSidenav_nav .sb-sidenav a.nav-link").each(function() {
+                if (this.href === path) {
+                    $(this).addClass("active");
+                }
+            });
+    
+        // Toggle the side navigation
+        $("#sidebarToggle").on("click", function(e) {
+            e.preventDefault();
+            $("body").toggleClass("sb-sidenav-toggled");
+        });
+    })(jQuery);
   }
-      
-  }
-
+}

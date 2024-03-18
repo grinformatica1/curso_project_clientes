@@ -8,6 +8,7 @@ import io.github.grinformatica1.clientes.model.repository.ServicoPrestadoReposit
 import io.github.grinformatica1.clientes.rest.dto.ServicoPrestadoDTO;
 import io.github.grinformatica1.clientes.util.BigDecimalConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -44,4 +46,13 @@ public class ServicoPrestadoController {
 
         return repository.save(servicoPrestado);
     }
+
+    @GetMapping
+    public List<ServicoPrestado> pesquisar(
+            @RequestParam(value = "nome", required = false, defaultValue = "") String nome,
+            @RequestParam(value = "mes", required = false) Integer mes
+    ){
+        return repository.findByNomeClienteAndMes("%" + nome + "%", mes);
+    }
+
 }

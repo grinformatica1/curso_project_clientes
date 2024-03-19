@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/servicos-prestados")
-@RequiredArgsConstructor
+@RequiredArgsConstructor //Cria um construtor com os argumentos obrigatórios
 public class ServicoPrestadoController {
 
     private final ClienteRepository clienteRepository;
@@ -49,7 +49,7 @@ public class ServicoPrestadoController {
 
     @GetMapping
     public List<ServicoPrestado> pesquisar(
-            @RequestParam(value = "nome", required = false, defaultValue = "") String nome,
+            @RequestParam(value = "nome", required = false, defaultValue = "") String nome, //required = false, não te obrigado a passar um parâmetro.
             @RequestParam(value = "mes", required = false) Integer mes
     ){
         return repository.findByNomeClienteAndMes("%" + nome + "%", mes);

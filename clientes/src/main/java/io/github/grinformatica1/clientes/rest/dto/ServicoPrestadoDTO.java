@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@NoArgsConstructor //Para criar um construtor sem parâmetro nenhum
 public class ServicoPrestadoDTO {
     private String descricao;
     private String preco;

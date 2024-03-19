@@ -26,6 +26,6 @@ public class ServicoPrestado {
     private BigDecimal valor;
 
     @Column
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy") //Para a Data sair formatada no pradão desejado
     private LocalDate data;
 }

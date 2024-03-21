@@ -7,6 +7,7 @@ import io.github.grinformatica1.clientes.model.repository.ClienteRepository;
 import io.github.grinformatica1.clientes.model.repository.ServicoPrestadoRepository;
 import io.github.grinformatica1.clientes.rest.dto.ServicoPrestadoDTO;
 import io.github.grinformatica1.clientes.util.BigDecimalConverter;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class ServicoPrestadoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ServicoPrestado salvar(@RequestBody ServicoPrestadoDTO dto){
+    public ServicoPrestado salvar(@RequestBody @Valid ServicoPrestadoDTO dto){
         LocalDate data = LocalDate.parse(dto.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Integer idCliente = dto.getIdCliente();
 

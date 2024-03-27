@@ -14,7 +14,7 @@ export class ServicoPrestadoFormComponent implements OnInit {
   clientes: Cliente[] = [];
   servico: ServicoPrestado;
   success: boolean = false;
-  errors: Strign[];
+  errors: String[];
 
   constructor(
     private clienteService: ClientesService,

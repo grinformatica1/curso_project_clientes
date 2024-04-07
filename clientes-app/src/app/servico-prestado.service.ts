@@ -23,7 +23,9 @@ export class ServicoPrestadoService {
     console.log('Nome buscar', nome);
     console.log('Mes buscar', mes)
 
-    const httpParams = new HttpParams().set("nome", nome).set("mes", mes.toString());
+    const httpParams = new HttpParams()
+    .set("nome", nome)
+    .set("mes", mes ? mes.toString() : '');
 
     const url = this.apiURL + "?" + httpParams.toString();
     console.log(url);

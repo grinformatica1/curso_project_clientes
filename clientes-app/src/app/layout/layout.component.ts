@@ -28,6 +28,6 @@ export class LayoutComponent implements AfterViewInit {
             e.preventDefault();
             $("body").toggleClass("sb-sidenav-toggled");
         });
-    })(jQuery);
+    })(JQuery);
   }
 }
